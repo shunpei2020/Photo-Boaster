@@ -14,11 +14,14 @@ if (!isset($_SESSION['csrf_token']) || $token !== $_SESSION['csrf_token']) {
 unset($_SESSION['csrf_token']);
 
 // バリデーション
-if(!$username = filter_input(INPUT_POST, 'username')) {
+if(!$username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING)) {
   $err['username'] = 'ユーザ名を記入してください。';
 }
 if(!$email = filter_input(INPUT_POST, 'email')) {
   $err['email'] = 'メールアドレスを記入してください。';
+}
+if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+  $err['email'] = 'メールアドレスを正しく入力してください。 
 }
 $password = filter_input(INPUT_POST, 'password');
 if (!preg_match("/\A[a-z\d]{8,100}+\z/i", $password)) {
