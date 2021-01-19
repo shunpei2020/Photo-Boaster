@@ -94,7 +94,7 @@ class UserLogic
     $sql = "SELECT * FROM 
             users AS T1 JOIN blog AS T2 
             ON T1.id = T2.user_id
-            AND T1.id = ?";
+            AND T1.id = ? ORDER BY T2.id DESC";
     $arr= [];
     $arr[] = $login_user['id'];
     try {
