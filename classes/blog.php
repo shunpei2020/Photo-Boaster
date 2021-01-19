@@ -96,7 +96,7 @@ Class Blog
   public static function getAll()
   {
     $dbh = dbconnect();
-    $sql = "SELECT * FROM blog";
+    $sql = "SELECT * FROM blog ORDER BY id DESC";
     $stmt = $dbh->query($sql);
     $result = $stmt->fetchall();
     return $result;
