@@ -1,4 +1,3 @@
-
 *{
   margin: 0;
   padding: 0;
@@ -26,12 +25,12 @@ nav ul{
 nav li{
   list-style: none;
 }
-nav a{
+nav li a{
   line-height: 10vh;
   color: black;
   text-decoration: none;
 }
-nav a:hover{
+nav li a:hover{
   opacity: .4;
 }
 
@@ -143,36 +142,20 @@ nav input{
 .form h2{
   font-size: 40px;
 }
-.f-title{
-  width: 80%;
-  margin: 30px auto;
-  font-size: 26px;
-  padding-top: 10px;
-}
-.f-title input{
-  margin: 10px auto;
-  width: 300px;
-  height: 50px;
-}
 .file-up{
   width: 80%;
   margin: 20px auto;
 }
 .f-img{
   width: 400px;
-  height: 300px;
+  height: 280px;
   object-fit: cover;
 }
 .photo{
-  font-size: 30px;
-}
-.f-content{
-  width: 80%;
-  margin: 20px auto;
-  font-size: 30px;
+  font-size: 20px;
 }
 .f-category{
-  font-size: 30px;
+  font-size: 20px;
 }
 .posting{
   margin-top: 30px;
@@ -216,6 +199,7 @@ footer a:hover{
   opacity: .5;
   text-transform: uppercase;
 }
+
 
 
 

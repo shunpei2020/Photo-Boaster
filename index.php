@@ -18,20 +18,21 @@ $blogData = Blog::getAll();
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-  <link rel="stylesheet" href="src/style.css">
+  <link rel="stylesheet" href="src/reset.css">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200&family=Poppins:wght@100&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="src/index.css">
   <title>PostList</title>
 </head>
 <body>
   
   <nav>
     <div class="logo">
-      <a href="index.php"><h2>tanaBlog</h2></a>
+      <a href="index.php"><h2>Photo Boaster</h2></a>
     </div>
     <ul>
       <li><a href="index.php">Home</a></li>
@@ -41,12 +42,12 @@ $blogData = Blog::getAll();
   </nav>
 
   <main class="pos-list">
-    <h2>Post List</h2>
+    <h2>Photo List</h2>
   <?php foreach($blogData as $columns) : ?>
     <div class="post">
     <div class="user">
-      <span class="material-icons md-50">
-      account_circle</span><span><?php echo h($columns['user_name']) ?></span>
+      <i class="fas fa-user"></i>
+      <p><?php echo h($columns['user_name']) ?></p>
     </div>
       <div class="main">
       <img src="<?php echo $columns['file_path'] ?>" alt="">
