@@ -1,0 +1,88 @@
+body{
+  font-family: 'Poppins', sans-serif;
+}
+nav{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  height: 10vh;
+  background-color: #eeeeee;
+  font-weight: bold;
+}
+nav h2{
+  line-height: 10vh;
+  font-size: 18px;
+}
+.logo a:hover{
+  color: #000;
+  text-decoration: none;
+}
+nav a{
+  text-decoration: none;
+  color: #000;
+}
+nav ul{
+  display: flex;
+  justify-content: space-around;
+  width: 35%;
+}
+nav li{
+  line-height: 10vh;
+  font-size: 10px;
+}
+nav li a:hover{
+  opacity: .4;
+}
+main{
+  width: 70%;
+  margin: 30px auto;
+  text-align: center;
+}
+main h2{
+  padding: 10px;
+}
+.posting{
+  margin-bottom: 20px;
+}
+footer{
+  height: 10vh;
+}
+footer p{
+  text-align: center;
+}
+footer a{
+  color: blue;
+  text-align: center;
+  text-decoration: none;
+}
+.msg{
+  color: crimson;
+}
+@media (min-width: 480px) {
+  nav h2{
+    font-size: 28px;
+  }
+  nav li{
+    font-size: 18px;
+  }
+  main{
+    border: 1px solid #eeeeee;
+    padding: 30px;
+    border-radius: 10px;
+  }
+  img{
+    width: 50%;
+    height: 300px;
+    margin: 20px 0;
+  }
+  .top{
+    font-size: 24px;
+  }
+  label{
+    font-size: 24px;
+  }
+  .posting{
+    margin-top: 20px;
+    padding: 10px 20px;
+  }
+}

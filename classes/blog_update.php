@@ -27,9 +27,6 @@ if (empty($blogs['content'])) {
 if (empty($blogs['category'])) {
   exit('カテゴリーを選択してください。');
 }
-if (empty($blogs['publish_status'])) {
-  exit('公開ステータスを選択してください。');
-}
 
 Blog::blogUpdate($blogs);
 ?>

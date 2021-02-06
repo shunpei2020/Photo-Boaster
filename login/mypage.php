@@ -20,18 +20,19 @@ $userBlog = UserLogic::getUserData($login_user);
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../src/reset.css">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200&family=Poppins:wght@100&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../src/style.css">
+  <link rel="stylesheet" href="../src/mypage.css">
   <title>Mypage</title>
 </head>
 <body>
   <nav>
     <div class="logo">
-      <a href="../index.php"><h2>tanaBlog</h2></a>
+      <a href="../index.php"><h2>Photo Boaster</h2></a>
     </div>
     <ul>
       <li><a href="../index.php">Home</a></li>
@@ -44,7 +45,7 @@ $userBlog = UserLogic::getUserData($login_user);
 
   <main class="mypage">
     <div class="user-data">
-      <h2>Hello <?php echo h($login_user['name']) ; ?> !</h2>
+      <h2>ようこそ <?php echo h($login_user['name']) ; ?> さん!</h2>
       <p>Username: <?php echo h($login_user['name']) ; ?></p>
       <p>Email: <?php echo h($login_user['email']) ; ?></p>
     </div>
@@ -52,6 +53,9 @@ $userBlog = UserLogic::getUserData($login_user);
       <h2>Your Post</h2>
       <p><a href="../form.php">投稿する</a></p>
     </div>
+      <?php if(!$userBlog) : ?>
+        <p class="msg">投稿がありません。</p>
+      <?php endif ; ?>
     <?php foreach($userBlog as $column) : ?>
     <div class="post">
       <div class="main">
@@ -72,7 +76,7 @@ $userBlog = UserLogic::getUserData($login_user);
   </main>
 
   <footer>
-    <p><a href="">Top</a></p>
+    <p><a href="../index.php">Top</a></p>
   </footer>
 </body>
 </html>

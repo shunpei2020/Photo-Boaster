@@ -14,14 +14,11 @@ if (!isset($_SESSION['csrf_token']) || $token !== $_SESSION['csrf_token']) {
 unset($_SESSION['csrf_token']);
 
 // バリデーション
-if(!$username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING)) {
+if(!$username = filter_input(INPUT_POST, 'username')) {
   $err['username'] = 'ユーザ名を記入してください。';
 }
 if(!$email = filter_input(INPUT_POST, 'email')) {
   $err['email'] = 'メールアドレスを記入してください。';
-}
-if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-  $err['email'] = 'メールアドレスを正しく入力してください。 
 }
 $password = filter_input(INPUT_POST, 'password');
 if (!preg_match("/\A[a-z\d]{8,100}+\z/i", $password)) {
@@ -47,18 +44,19 @@ if(!$hasCreated) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../src/reset.css">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200&family=Poppins:wght@100&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../src/style.css">
+  <link rel="stylesheet" href="../src/login.css">
   <title>Signup</title>
 </head>
 <body>
   <nav>
     <div class="logo">
-      <a href="../index.php"><h2>tanaBlog</h2></a>
+      <a href="../index.php"><h2>Photo Boaster</h2></a>
     </div>
     <ul>
       <li><a href="../index.php">Home</a></li>

@@ -1,0 +1,123 @@
+body{
+  font-family: 'Poppins', sans-serif;
+}
+nav{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  min-height: 10vh;
+  background-color: #eeeeee;
+  font-weight: bold;
+}
+nav h2{
+  line-height: 10vh;
+}
+nav a{
+  text-decoration: none;
+  color: #000;
+}
+nav ul{
+  display: flex;
+  justify-content: space-around;
+  width: 35%;
+}
+nav li{
+  line-height: 10vh;
+  font-size: 10px;
+}
+nav li a:hover{
+  opacity: .4;
+}
+img{
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  margin: 10px 0;
+}
+main{
+  width: 90%;
+  margin: 30px auto;
+  border-bottom: 1px solid #000;
+}
+.user p{
+  display: inline-block;
+}
+.pos-list h2{
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.post{
+  padding: 20px;
+  border-top: 1px solid #000;
+  border-top: 1px solid #000;
+}
+.data h2{
+  font-size: 20px;
+}
+.data p{
+  margin-bottom: 10px;
+}
+.edit{
+  text-align: right;
+}
+.edit a{
+  color: blue;
+}
+.edit a:hover{
+  opacity: .4;
+}
+footer{
+  height: 10vh;
+}
+footer p{
+  text-align: center;
+  line-height: 10vh;
+}
+footer a{
+  color: blue;
+  text-align: center;
+  text-decoration: none;
+}
+
+@media (min-width: 480px) {
+  nav h2{
+    font-size: 28px;
+  }
+  nav li{
+    font-size: 18px;
+  }
+  .main{
+    display: flex;
+    justify-content: space-between;
+  }
+  .pos-list h2{
+    font-size: 30px;
+  }
+  .user i{
+    font-size: 40px;
+  }
+  .user p{
+    line-height: 40px;
+    font-size: 30px;
+  }
+  .data{
+    width: 50%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  img{
+    width: 50%;
+    height: 250px;
+  }
+  footer p{
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 768px) {
+  img{
+    width: 400px;
+  }
+}

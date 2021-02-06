@@ -7,9 +7,9 @@ Class Blog
   public static function blogCreate($blogs,$filename,$save_path,$login_user)
   {
     $sql = "INSERT INTO 
-              blog(user_id, user_name, title, file_name, file_path,content, category, publish_status) 
+              blog(user_id, user_name, title, file_name, file_path,content, category) 
           VALUES 
-              (:user_id, :user_name, :title, :file_name, :file_path, :content, :category, :publish_status)";
+              (:user_id, :user_name, :title, :file_name, :file_path, :content, :category)";
 
     $dbh = dbconnect();
     $dbh->beginTransaction();
@@ -23,7 +23,6 @@ Class Blog
       $stmt->bindValue(':file_path', $save_path, PDO::PARAM_STR);
       $stmt->bindValue(':content', $blogs['content'], PDO::PARAM_STR);
       $stmt->bindValue(':category', $blogs['category'], PDO::PARAM_INT);
-      $stmt->bindValue(':publish_status', $blogs['publish_status'], PDO::PARAM_INT);
       $stmt->execute();
       $dbh->commit();
       header('Location: ../index.php');
@@ -37,7 +36,7 @@ Class Blog
   public static function blogUpdate($blogs) 
   {
     $sql = "UPDATE blog SET
-              title = :title, content = :content, category = :category, publish_status = :publish_status
+              title = :title, content = :content, category = :category
             WHERE 
               id = :id";
 
@@ -49,7 +48,6 @@ Class Blog
       $stmt->bindValue(':title', $blogs['title'], PDO::PARAM_STR);
       $stmt->bindValue(':content', $blogs['content'], PDO::PARAM_STR);
       $stmt->bindValue(':category', $blogs['category'], PDO::PARAM_INT);
-      $stmt->bindValue(':publish_status', $blogs['publish_status'], PDO::PARAM_INT);
       $stmt->bindValue(':id', $blogs['id'], PDO::PARAM_INT);
       $stmt->execute();
       $dbh->commit();
@@ -83,9 +81,6 @@ Class Blog
     }
     if (empty($blogs['category'])) {
       exit('カテゴリーを選択してください。');
-    }
-    if (empty($blogs['publish_status'])) {
-      exit('公開ステータスを選択してください。');
     }
     if (!move_uploaded_file($tmp_path, $save_path)) {
       exit('画像を選択してください。');
