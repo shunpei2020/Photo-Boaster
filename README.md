@@ -1,4 +1,4 @@
-# tanaBlog
+# Photo Boaster
 
 #写真（画像）共有サイト
 
