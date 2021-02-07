@@ -1,6 +1,5 @@
 <?php
-session_start();
-require_once 'blog.php';
+require_once(__DIR__ . '/../env.php');
 
 // 二重送信防止
 $token = filter_input(INPUT_POST, 'csrf_token');

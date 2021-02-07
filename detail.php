@@ -1,17 +1,5 @@
 <?php 
-session_start();
-require_once './classes/blog.php';
-require_once 'functions.php';
-require_once dirname(__FILE__) . '/classes/UserLogic.php';
-
-// ログインチェック
-$result = UserLogic::checkLogin();
-
-if (!$result) {
-  $_SESSION['login_err'] = 'ユーザを登録してログインしてください。';
-  header('Location: login/login_form.php');
-  return;
-}
+require_once(__DIR__ . '/env.php');
 
 $id = $_GET['id'];
 $result = Blog::getById($id);
@@ -39,7 +27,6 @@ $result = Blog::getById($id);
       <li><a href="form.php">Postform</a></li>
     </ul>
   </nav>
-
   <main class="detail">
     <h2>Detail</h2>
     <div class="detail-post">

@@ -1,8 +1,5 @@
 <?php
-session_start();
-require_once dirname(__FILE__) .'/../classes/blog.php';
-require_once dirname(__FILE__) . '/../classes/UserLogic.php';
-require_once dirname(__FILE__) . '/../functions.php';
+require_once(__DIR__ . '/../env.php');
 
 // ログインチェック
 $result = UserLogic::checkLogin();
@@ -38,11 +35,10 @@ $userBlog = UserLogic::getUserData($login_user);
       <li><a href="../index.php">Home</a></li>
       <li><a href="../form.php">Postform</a></li>
       <li><form action="logout.php" method="POST">
-      <input type="submit" name="logout" value="Logout"/>
+      <input type="submit" class="logout" name="logout" value="Logout"/>
       </form></li>
     </ul>
   </nav>
-
   <main class="mypage">
     <div class="user-data">
       <h2>ようこそ <?php echo h($login_user['name']) ; ?> さん!</h2>
@@ -69,14 +65,27 @@ $userBlog = UserLogic::getUserData($login_user);
       <div class="edit">
       <a href="../detail.php?id=<?php echo $column['id'] ?>">詳細</a>
       <a href="../update_form.php?id=<?php echo $column['id'] ?>">編集</a>
-      <a href="../classes/blog_delete.php?id=<?php echo $column['id'] ?>">削除</a>
+      <a href="" class="delete">削除</a>
       </div>
     </div>
     <?php endforeach; ?>
   </main>
-
   <footer>
     <p><a href="../index.php">Top</a></p>
   </footer>
+  <script>
+    'use strict';
+    {
+      const deletes = document.querySelectorAll('.delete');
+      deletes.forEach(span => {
+        span.addEventListener('click', () => {
+          if(!confirm('削除しますか？')){
+            return;
+          }
+          span.href = "../classes/blog_delete.php?id=<?php echo $column['id'] ?>";
+        });
+      });
+    }
+  </script>
 </body>
 </html>

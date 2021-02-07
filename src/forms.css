@@ -45,7 +45,17 @@ main h2{
   padding: 10px;
 }
 .posting{
+  width: 100px;
+  height: 50px;
   margin-bottom: 20px;
+  border: 1px solid #000;
+  background-color: #eeeeee;
+  border-radius: 4px;
+  margin: 0 auto;
+  line-height: 50px;
+}
+.posting:hover{
+  opacity: .4;
 }
 footer{
   height: 10vh;

@@ -1,8 +1,5 @@
 <?php
-session_start();
-require_once './classes/UserLogic.php';
-require_once './classes/blog.php';
-require_once './functions.php';
+require_once(__DIR__ . '/env.php');
 
 // ログインチェック
 $result = UserLogic::checkLogin();
@@ -36,7 +33,7 @@ $category = (int)$result['category'];
   <link rel="stylesheet" href="src/reset.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200&family=Poppins:wght@100&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="src/form.css">
+  <link rel="stylesheet" href="src/forms.css">
   <title>Updateform</title>
 </head>
 <body>
@@ -84,5 +81,7 @@ $category = (int)$result['category'];
   <footer>
     <p class="top"><a href="./index.php">Cancel</a></p>
   </footer>
+
+  <script src="js/main.js"></script>
 </body>
 </html>

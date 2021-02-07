@@ -1,5 +1,5 @@
 <?php
-require_once dirname(__FILE__) . '/../dbc.php';
+require_once(__DIR__ . '/../env.php');
 
 Class Blog
 {
@@ -129,7 +129,7 @@ Class Blog
     $stmt->bindValue(':id', (int)$id, PDO::PARAM_INT);
     $result = $stmt->execute();
     if ($result) {
-      header('Location: ../index.php');
+      header('Location: /');
     }
   }
 }

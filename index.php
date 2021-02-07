@@ -1,17 +1,5 @@
 <?php
-session_start();
-require_once 'classes/blog.php';
-require_once 'functions.php';
-require_once 'classes/UserLogic.php';
-
-// ログインチェック
-$result = UserLogic::checkLogin();
-
-if (!$result) {
-  $_SESSION['login_err'] = 'ユーザを登録してログインしてください。';
-  header('Location: login/login_form.php');
-  return;
-}
+require_once(__DIR__ . '/env.php');
 
 // 取得したデータを表示
 $blogData = Blog::getAll();
@@ -29,7 +17,6 @@ $blogData = Blog::getAll();
   <title>PostList</title>
 </head>
 <body>
-  
   <nav>
     <div class="logo">
       <a href="index.php"><h2>Photo Boaster</h2></a>
@@ -40,10 +27,9 @@ $blogData = Blog::getAll();
       <li><a href="form.php">Postform</a></li>
     </ul>
   </nav>
-
   <main class="pos-list">
     <h2>Photo List</h2>
-  <?php foreach($blogData as $columns) : ?>
+    <?php foreach($blogData as $columns) : ?>
     <div class="post">
     <div class="user">
       <i class="fas fa-user"></i>
@@ -61,9 +47,8 @@ $blogData = Blog::getAll();
       <a href="detail.php?id=<?php echo $columns['id'] ?>">詳細</a>
       </div>
     </div>
-  <?php endforeach ; ?>
+    <?php endforeach ; ?>
   </main>
-
   <footer>
     <p><a href="index.php">Top</a></p>
   </footer>

@@ -7,7 +7,7 @@
 
 ＃使用技術
 
-HTML/CSS/PHP/
+HTML5/CSS3/JavaScript/jQuery3/PHP5
 
 #機能
 

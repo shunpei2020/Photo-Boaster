@@ -1,6 +1,5 @@
 <?php
-session_start();
-require_once '../classes/UserLogic.php';
+require_once(__DIR__ . '/../env.php');
 
 $err = [];
 // バリデーション

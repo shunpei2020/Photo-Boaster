@@ -1,7 +1,5 @@
 <?php
-session_start();
-require_once '../functions.php';
-require_once '../classes/UserLogic.php';
+require_once(__DIR__ . '/../env.php');
 
 $err = $_SESSION;
 

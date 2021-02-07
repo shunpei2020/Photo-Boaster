@@ -1,13 +1,10 @@
 <?php
-session_start();
-require_once dirname(__FILE__) . '/classes/UserLogic.php';
-require_once 'functions.php';
+require_once(__DIR__ . '/env.php');
 
 // ログインチェック
 $result = UserLogic::checkLogin();
 
 if (!$result) {
-  $_SESSION['login_err'] = 'ユーザを登録してログインしてください。';
   header('Location: login/login_form.php');
   return;
 }
@@ -24,7 +21,7 @@ $login_user = $_SESSION['login_user'];
   <link rel="stylesheet" href="src/reset.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200&family=Poppins:wght@100&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="src/form.css">
+  <link rel="stylesheet" href="src/forms.css">
   <title>Postform</title>
 </head>
 <body>
@@ -79,11 +76,13 @@ $login_user = $_SESSION['login_user'];
       <?php endif; ?>
       <br>
       <input type="hidden" name="csrf_token" value="<?php echo h(setToken()); ?>">
-      <input class="posting" type="submit" value="POST">
+      <div class="posting">POST</div>
     </form>
   </main>
   <footer>
     <p class="top"><a href="./index.php">Cancel</a></p>
   </footer>
+
+  <script src="js/main.js"></script>
 </body>
 </html>

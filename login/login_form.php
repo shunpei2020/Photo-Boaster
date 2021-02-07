@@ -1,9 +1,7 @@
 <?php
-session_start();
-require_once '../classes/UserLogic.php';
-require_once '../functions.php';
-$err = $_SESSION;
+require_once(__DIR__ . '/../env.php');
 
+$err = $_SESSION;
 // セッションを消す
 $_SESSION = array();
 session_destroy();
@@ -29,7 +27,6 @@ session_destroy();
       <li><a href="../form.php">Postform</a></li>
     </ul>
   </nav>
-
   <main class="form login">
     <h2>Login Form</h2>
       <?php if (isset($err['msg'])) : ?>
@@ -42,23 +39,21 @@ session_destroy();
     <div class="form-group">
       <label for="email">Email address</label>
       <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
-        <?php if (isset($err['email'])) : ?>
-          <p class="msg"><?php echo $err['email']; ?></p>
-        <?php endif; ?>
+      <?php if (isset($err['email'])) : ?>
+        <p class="msg"><?php echo $err['email']; ?></p>
+      <?php endif; ?>
     </div>
     <div class="form-group">
       <label for="password">Password</label>
       <input type="password" name="password" id="password" class="form-control" placeholder="Password">
-        <?php if (isset($err['password'])) : ?>
-          <p class="msg"><?php echo $err['password']; ?></p>
-        <?php endif; ?>
+      <?php if (isset($err['password'])) : ?>
+        <p class="msg"><?php echo $err['password']; ?></p>
+      <?php endif; ?>
     </div>
     <p>
       <input class="posting" type="submit" value="Login">
     </p>
-        
   </main>
-
   <footer>
     <p class="log">登録がお済みでない方はこちら<br><a href="./signup_form.php">Sign Up</a></p>
   </footer>

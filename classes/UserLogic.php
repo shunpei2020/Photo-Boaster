@@ -1,5 +1,5 @@
 <?php 
-require_once dirname(__FILE__) . '/../dbc.php';
+require_once(__DIR__ . '/../env.php');
 
 class UserLogic
 {
