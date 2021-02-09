@@ -1,4 +1,4 @@
-<?php
+<?php 
 require_once(__DIR__ . '/../env.php');
 
 // 二重送信防止
@@ -12,6 +12,7 @@ unset($_SESSION['csrf_token']);
 
 $login_user = $_SESSION['login_user'];
 
-$blogs = $_POST;
-Blog::blogUpdate($blogs);
+$comments = $_POST;
+$comment = Blog::comment($comments);
+header('Location: ../index.php');
 ?>

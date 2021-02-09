@@ -59,6 +59,7 @@ main{
 }
 .edit{
   text-align: right;
+  display: flex;
 }
 .edit a{
   color: blue;

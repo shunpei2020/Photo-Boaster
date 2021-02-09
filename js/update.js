@@ -1,12 +1,11 @@
 'use strict';
 {
-  // 投稿
+  // 更新
   const posting = () => {
     const posts = document.querySelectorAll('.posting');
-    const title = document.querySelector('.title');
-    const photo = document.querySelector('.photos');
-    const text = document.querySelector('.text');
-    const errMsg = document.querySelector('.err-msg');
+    const title = document.querySelector('.titles');
+    const text = document.querySelector('.texts');
+    const errMsg = document.querySelector('.err-msgs');
     errMsg.style.color = 'red';
 
     posts.forEach(post => {
@@ -19,16 +18,11 @@
           errMsg.innerText = 'タイトルは200文字以内で入力してください！';
           return;
         }
-
-        if(!photo.value) {
-          errMsg.innerText = '画像を選択してください！';
-          return;
-        }
         if(!text.value) {
           errMsg.innerText = '本文を入力してください！';
           return;
         }
-        if(!confirm('投稿しますか？')) {
+        if(!confirm('更新しますか？')) {
           return;
         }
         post.parentNode.submit();
@@ -36,4 +30,5 @@
     });
   }
   posting();
+
 }

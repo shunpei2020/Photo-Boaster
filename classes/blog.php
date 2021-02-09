@@ -58,7 +58,7 @@ Class Blog
     }
   }
 
-  // ブログのバリデーション
+  // 画像のバリデーション
   public static function blogValidate($blogs,$file,$filename,$tmp_path,$save_path) 
   {
     if ($file['size'] > 1048576 || $file['error'] === 2) {
@@ -69,18 +69,6 @@ Class Blog
     $file_ext = pathinfo($filename, PATHINFO_EXTENSION);
     if (!in_array(strtolower($file_ext), $allow_ext)) {
       exit('画像ファイルを添付してください。');
-    }
-    if (empty($blogs['title'])) {
-      exit('タイトルを入力してください。');
-    }
-    if (mb_strlen($blogs['title']) > 200) {
-      exit('タイトルは200文字以内で入力してください。');
-    }
-    if (empty($blogs['content'])) {
-      exit('テキストを入力してください。');
-    }
-    if (empty($blogs['category'])) {
-      exit('カテゴリーを選択してください。');
     }
     if (!move_uploaded_file($tmp_path, $save_path)) {
       exit('画像を選択してください。');
@@ -131,6 +119,44 @@ Class Blog
     if ($result) {
       header('Location: /');
     }
+  }
+  public static function comment($comments)
+  {
+    $sql = 'INSERT INTO 
+            comments (post_id, text, comment_user)
+            VALUES
+            (:post_id, :text, :comment_user)';
+    $dbh = dbconnect();
+    $dbh->beginTransaction();
+    
+    try{
+      $stmt = $dbh->prepare($sql);
+      $stmt->bindValue(':post_id', $comments['post_id'], PDO::PARAM_INT);
+      $stmt->bindValue(':comment_user', $comments['comment_user'], PDO::PARAM_STR);
+      $stmt->bindValue(':text', $comments['text'], PDO::PARAM_STR);
+      $stmt->execute();
+      $dbh->commit();
+    }catch(PDOException $e) {
+      $dbh->rollback();
+      exit($e->getMessage());
+    }
+  }
+  // コメントを表示
+  public static function getComment($id)
+  {
+    if(empty($id)) {
+      exit('IDが不正です');
+    }
+
+    $sql = 'SELECT comments.* FROM comments JOIN blog ON comments.post_id = blog.id AND comments.post_id = :id';
+
+    $dbh = dbconnect();
+    $stmt = $dbh->prepare($sql);
+    $stmt->bindValue(':id', (int)$id, PDO::PARAM_INT);
+    $stmt->execute();
+    $comment = $stmt->fetchAll();
+    return $comment;
+    $dbh = null; 
   }
 }
 ?>
